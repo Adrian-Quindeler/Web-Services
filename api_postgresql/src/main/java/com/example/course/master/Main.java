@@ -23,7 +23,7 @@ import com.example.course.repositories.UserRepository;
 
 @Configuration
 @Profile("dev")
-public class Insert implements CommandLineRunner{
+public class Main implements CommandLineRunner{
 
 	@Autowired
 	private UserRepository userRepository;
@@ -43,7 +43,8 @@ public class Insert implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		/* Remova o comentário para inserir os dados no banco. Adicione novamente (o comentário) após executar uma vez, ou remova o código de inserção, caso contrário os dados serão duplicados.
+		/*Remova o comentário para inserir os dados no banco. Adicione novamente (o comentário) após executar uma vez, ou remova o código de inserção, caso contrário os dados serão duplicados.
+		
 		Category cat1 = new Category(null, "Electronics"); 
 		Category cat2 = new Category(null, "Books"); 
 		Category cat3 = new Category(null, "Computers"); 

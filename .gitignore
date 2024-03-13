@@ -1,0 +1,21 @@
+# Java
+*.class
+*.jar
+
+# Maven
+target/
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+/.metadata/
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+
+# Spring Tool Suite
+.springBeans
