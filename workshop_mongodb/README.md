@@ -5,24 +5,27 @@ Este projeto está sendo desenvolvido com conceitos básicos de persistência de
 Java
 Spring Boot
 Spring Data MongoDB
-Dependencia
+Postman
 MongoDB (banco de dados NoSQL)
 
 
 ## Estrutura do Sistema
-O sistema é organizado em camadas para promover modularidade e manutenção:
+O sistema consiste em uma API de uma rede social genérica com usuários, suas postagens e comentários, feito no sping tool suite com MongoDB e testado usando o Postman. Suas classes são divididas em:
 
-- Domínio (domain): Define os objetos do modelo de dados, encapsulando lógica e atributos.
+- Domínio (domain): Define os objetos do modelo de dados.
 - Repositório (repository): Provê acesso e operações de persistência de dados no MongoDB.
 - Serviço (services): Camada de negócio responsável pela manipulação de dados, utilizando métodos do repositório.
 - Recursos (resources): Expõe endpoints REST para interação externa com o sistema.
 - DTO (Data Transfer Object): Objetos simples utilizados para transferência de dados específicos entre camadas.
 - Configuração (config): Inicializa o banco de dados e popula dados de exemplo.
 
+## Endpoints
+### Consulta por Título de Postagem: 
+Foi implementada duas opções de consulta por título da postagem no PostRepository. Uma delas utiliza a anotação @Query, a outra ultiliza um dos Query methods oferecidos pelo Spring Data, chamado "findByTitleContainingIgnoreCase";
 
-## Classes principais
-- User: Representa a entidade Usuário, com atributos para nome (name) e email.
-- UserRepository: Interface que estende MongoRepository para operações com documentos User no MongoDB.
-- UserService: Camada de serviço para manipular usuários, delegando operações ao UserRepository.
-- UserResource: Classe responsável por expor endpoints REST para gerenciamento de usuários.
-- UserDTO: Objeto DTO para transferir dados de usuário entre camadas, contendo apenas atributos necessários (id, name, email).
+### Consulta Avançada: 
+Outra consulta personalizada no PostRepository foi criada para realizar uma busca avançada por título, corpo ou comentários da postagem, podendo também definir data mínima e data máxima de busca. Novamente, foi utilizada a anotação @Query para definir a lógica da consulta.
+
+### Endpoints RESTful: 
+Os métodos para acesso aos recursos (usuários, postagens) foram implementados nas classes de recursos (UserResource e PostResource) utilizando as anotações do Spring MVC (@RestController, @RequestMapping, @RequestParam, @PathVariable, etc.). Cada método corresponde a uma operação CRUD específica.
+
